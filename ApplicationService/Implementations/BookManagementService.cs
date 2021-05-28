@@ -11,7 +11,7 @@ namespace ApplicationService.Implementations
 {
     public class BookManagementService
     {
-        private BookShop1SystemDBContext ctx = new BookShop1SystemDBContext();
+        private BookShop2SystemDBContext ctx = new BookShop2SystemDBContext();
 
         public List<BookDTO> Get()
         {

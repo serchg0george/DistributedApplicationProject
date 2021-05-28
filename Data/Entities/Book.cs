@@ -21,5 +21,7 @@ namespace Data.Entities
         public double Price { get; set; }
 
         public string Publisher { get; set; }
+
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

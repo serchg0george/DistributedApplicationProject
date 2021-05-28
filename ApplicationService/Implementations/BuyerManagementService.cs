@@ -11,7 +11,7 @@ namespace ApplicationService.Implementations
 {
     public class BuyerManagementService
     {
-        private BookShop1SystemDBContext ctx = new BookShop1SystemDBContext();
+        private BookShop2SystemDBContext ctx = new BookShop2SystemDBContext();
 
         public List<BuyerDTO> Get()
         {
@@ -27,7 +27,7 @@ namespace ApplicationService.Implementations
                     Money = item.Money,
                     Name = item.Name,
                     Sex = item.Sex,
-                    TelephoneNumber = item.TelephoneNumber
+                    PhoneNumber = item.PhoneNumber
                 });
             }
 
@@ -43,7 +43,7 @@ namespace ApplicationService.Implementations
                 Money = buyerDTO.Money,
                 Name = buyerDTO.Name,
                 Sex = buyerDTO.Sex,
-                TelephoneNumber = buyerDTO.TelephoneNumber
+                PhoneNumber = buyerDTO.PhoneNumber
 
             };
             try

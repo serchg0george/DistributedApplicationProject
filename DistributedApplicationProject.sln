@@ -13,6 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService", "WcfService\WcfService.csproj", "{2D7B71FB-595D-407C-BB96-F7E7C92ED8F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC", "MVC\MVC.csproj", "{DFDA9C59-B740-4783-BDF5-95882AAF146B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2D7B71FB-595D-407C-BB96-F7E7C92ED8F4} = {2D7B71FB-595D-407C-BB96-F7E7C92ED8F4}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +36,10 @@ Global
 		{2D7B71FB-595D-407C-BB96-F7E7C92ED8F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D7B71FB-595D-407C-BB96-F7E7C92ED8F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D7B71FB-595D-407C-BB96-F7E7C92ED8F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFDA9C59-B740-4783-BDF5-95882AAF146B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFDA9C59-B740-4783-BDF5-95882AAF146B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFDA9C59-B740-4783-BDF5-95882AAF146B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFDA9C59-B740-4783-BDF5-95882AAF146B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +48,7 @@ Global
 		{A026FF34-D16F-41FD-B4A7-98D82B9940F4} = {E4F39F20-812B-4D97-85A8-6D54C34D78B6}
 		{57223E6B-6A6A-421F-A37F-928C8F0AF024} = {E4F39F20-812B-4D97-85A8-6D54C34D78B6}
 		{2D7B71FB-595D-407C-BB96-F7E7C92ED8F4} = {B592DBF6-284D-4189-8D17-CE3722FAF5B8}
+		{DFDA9C59-B740-4783-BDF5-95882AAF146B} = {B592DBF6-284D-4189-8D17-CE3722FAF5B8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2366B5C4-0F66-42FE-B2E6-5A5CD6DB5239}

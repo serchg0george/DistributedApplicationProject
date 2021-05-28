@@ -16,7 +16,7 @@ namespace ApplicationService.DTOs
 
         public double Money { get; set; }
 
-        public int TelephoneNumber { get; set; }
+        public int PhoneNumber { get; set; }
 
         public string Email { get; set; }
 

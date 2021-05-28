@@ -1,14 +1,16 @@
-﻿using System;
+﻿using ApplicationService.DTOs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace Data.Entities
+namespace MVC.ViewModels
 {
-    public class Buyer : BaseEntity
+    public class BuyerVM
     {
+        public int Id { get; set; }
+
         [Required]
         public string Name { get; set; }
 
@@ -16,12 +18,17 @@ namespace Data.Entities
 
         public double Money { get; set; }
 
-        public int PhoneNumber { get; set; }
+        public int TelephoneNumber { get; set; }
 
         public string Email { get; set; }
 
         public string Sex { get; set; }
 
-        public virtual ICollection<Order> Orders { get; set; }
+        public BuyerVM() { }
+
+        public BuyerVM(BuyerDTO buyerDTO)
+        {
+
+        }
     }
 }

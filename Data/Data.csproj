@@ -51,16 +51,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\BookShop1SystemDBContext.cs" />
+    <Compile Include="Context\BookShop2SystemDBContext.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Book.cs" />
     <Compile Include="Entities\Buyer.cs" />
     <Compile Include="Entities\Order.cs" />
+    <Compile Include="Migrations\202105281716509_InitialMigration.cs" />
+    <Compile Include="Migrations\202105281716509_InitialMigration.designer.cs">
+      <DependentUpon>202105281716509_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202105281716509_InitialMigration.resx">
+      <DependentUpon>202105281716509_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

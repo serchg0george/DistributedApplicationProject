@@ -11,7 +11,7 @@ namespace ApplicationService.Implementations
 {
     public class OrderManagementService
     {
-        private BookShop1SystemDBContext ctx = new BookShop1SystemDBContext();
+        private BookShop2SystemDBContext ctx = new BookShop2SystemDBContext();
 
         public List<OrderDTO> Get()
         {
@@ -23,11 +23,32 @@ namespace ApplicationService.Implementations
                 {
                     Id = item.Id,
                     BookId = item.BookId,
+                    Book = new BookDTO
+                    {
+                        Id = item.BookId,
+                        Author = item.Book.Author,
+                        Name = item.Book.Name,
+                        Pages = item.Book.Pages,
+                        Price = item.Book.Price,
+                        Publisher = item.Book.Publisher,
+                        Year = item.Book.Year
+                    },  
                     BuyerId = item.BuyerId,
+                    Buyer = new BuyerDTO
+                    {
+                        Id = item.BuyerId,
+                        Name = item.Buyer.Name,
+                        Age = item.Buyer.Age,
+                        Money = item.Buyer.Money,
+                        PhoneNumber = item.Buyer.PhoneNumber,
+                        Email = item.Buyer.Email,
+                        Sex = item.Buyer.Sex
+                    },
                     Adress = item.Adress,
                     DeliveryService = item.DeliveryService,
                     FinalPrice = item.FinalPrice,
                     TimeOfOrder = item.TimeOfOrder
+
 
                 });
             }

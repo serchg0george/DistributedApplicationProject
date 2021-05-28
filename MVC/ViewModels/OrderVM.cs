@@ -1,21 +1,17 @@
-﻿using Data.Entities;
+﻿using ApplicationService.DTOs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace ApplicationService.DTOs
+namespace MVC.ViewModels
 {
-    public class OrderDTO
+    public class OrderVM
     {
-        public int Id { get; set; }
-
         public int BookId { get; set; }
         public virtual BookDTO Book { get; set; }
-        
+
         public int BuyerId { get; set; }
         public virtual BuyerDTO Buyer { get; set; }
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Data.Context
 {
-    public class BookShop1SystemDBContext : DbContext
+    public class BookShop2SystemDBContext : DbContext
     {
         public DbSet<Book> Books { get; set; }
 

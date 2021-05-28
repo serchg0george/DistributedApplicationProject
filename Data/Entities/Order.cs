@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,13 +11,16 @@ namespace Data.Entities
     {
 
         public int BookId { get; set; }
+        public virtual Book Book { get; set; }
 
         public int BuyerId { get; set; }
+        public virtual Buyer Buyer { get; set; }
 
         public string DeliveryService { get; set; }
 
         public string Adress { get; set; }
 
+        [Required]
         public DateTime TimeOfOrder { get; set; }
 
         public double FinalPrice { get; set; }
