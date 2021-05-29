@@ -16,9 +16,9 @@ namespace MVC.ViewModels
 
         public byte Age { get; set; }
 
-        public double Money { get; set; }
+        public decimal Money { get; set; }
 
-        public int TelephoneNumber { get; set; }
+        public int PhoneNumber { get; set; }
 
         public string Email { get; set; }
 
@@ -28,7 +28,13 @@ namespace MVC.ViewModels
 
         public BuyerVM(BuyerDTO buyerDTO)
         {
-
+            Id = buyerDTO.Id;
+            Name = buyerDTO.Name;
+            Age = buyerDTO.Age;
+            Money = buyerDTO.Money;
+            PhoneNumber = buyerDTO.PhoneNumber;
+            Email = buyerDTO.Email;
+            Sex = buyerDTO.Sex;
         }
     }
 }

@@ -56,10 +56,58 @@ namespace ApplicationService.Implementations
             return orderDTOs;
         }
 
+        public OrderDTO GetById(int id)
+        {
+            Order item = ctx.Orders.Find(id);
+
+            OrderDTO orderDTO = new OrderDTO
+            {
+                Id = item.Id,
+                BookId = item.BookId,
+                Book = new BookDTO
+                {
+                    Id = item.BookId,
+                    Author = item.Book.Author,
+                    Name = item.Book.Name,
+                    Pages = item.Book.Pages,
+                    Price = item.Book.Price,
+                    Publisher = item.Book.Publisher,
+                    Year = item.Book.Year
+                },
+                BuyerId = item.BuyerId,
+                Buyer = new BuyerDTO
+                {
+                    Id = item.BuyerId,
+                    Name = item.Buyer.Name,
+                    Age = item.Buyer.Age,
+                    Money = item.Buyer.Money,
+                    PhoneNumber = item.Buyer.PhoneNumber,
+                    Email = item.Buyer.Email,
+                    Sex = item.Buyer.Sex
+                },
+                Adress = item.Adress,
+                DeliveryService = item.DeliveryService,
+                FinalPrice = item.FinalPrice,
+                TimeOfOrder = item.TimeOfOrder
+            };
+            return orderDTO;
+        }
+
         public bool Save(OrderDTO orderDTO)
         {
+            if (orderDTO.Book == null || orderDTO.BookId == 0)
+            {
+                return false;
+            }
+
+            else if (orderDTO.Buyer == null || orderDTO.BuyerId == 0)
+            {
+                return false;
+            }
+
             Order Order = new Order
             {
+                Id = orderDTO.Id,
                 BookId = orderDTO.BookId,
                 BuyerId = orderDTO.BuyerId,
                 Adress = orderDTO.Adress,

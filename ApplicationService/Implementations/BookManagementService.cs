@@ -34,6 +34,24 @@ namespace ApplicationService.Implementations
             return bookDTOs;
         }
 
+        public BookDTO GetById(int id)
+        {
+            BookDTO bookDTO = new BookDTO();
+            Book book = ctx.Books.Find(id);
+            if(book != null)
+            {
+                bookDTO.Id = book.Id;
+                bookDTO.Author = book.Author;
+                bookDTO.Name = book.Name;
+                bookDTO.Pages = book.Pages;
+                bookDTO.Price = book.Price;
+                bookDTO.Publisher = book.Publisher;
+                bookDTO.Year = book.Year;
+            }
+
+            return bookDTO;
+        }
+
         public bool Save(BookDTO bookDTO)
         {
             Book Book = new Book
@@ -72,5 +90,6 @@ namespace ApplicationService.Implementations
                 return false;
             }
         }
+
     }
 }

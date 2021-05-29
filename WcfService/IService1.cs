@@ -27,6 +27,9 @@ namespace WcfService
         string PostBook(BookDTO bookDTOs);
 
         [OperationContract]
+        BookDTO GetBookById(int id);
+
+        [OperationContract]
         string DeleteBook(int id);
 
         [OperationContract]
@@ -36,6 +39,9 @@ namespace WcfService
         string PostBuyer(BuyerDTO buyerDTOs);
 
         [OperationContract]
+        BuyerDTO GetBuyerById(int id);
+
+        [OperationContract]
         string DeleteBuyer(int id);
 
         [OperationContract]
@@ -43,6 +49,9 @@ namespace WcfService
 
         [OperationContract]
         string PostOrder(OrderDTO orderDTOs);
+
+        [OperationContract]
+        OrderDTO GetOrderById(int id);
 
         [OperationContract]
         string DeleteOrder(int id);

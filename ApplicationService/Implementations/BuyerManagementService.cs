@@ -22,16 +22,35 @@ namespace ApplicationService.Implementations
                 buyerDTOs.Add(new BuyerDTO
                 {
                     Id = item.Id,
-                    Age = item.Age,
-                    Email = item.Email,
-                    Money = item.Money,
                     Name = item.Name,
-                    Sex = item.Sex,
-                    PhoneNumber = item.PhoneNumber
+                    Age = item.Age,
+                    Money = item.Money,
+                    PhoneNumber = item.PhoneNumber,
+                    Email = item.Email,                  
+                    Sex = item.Sex
+                    
                 });
             }
 
             return buyerDTOs;
+        }
+
+        public BuyerDTO GetById(int id)
+        {
+            BuyerDTO buyerDTO = new BuyerDTO();
+            Buyer buyer = ctx.Buyers.Find(id);
+            if (buyer != null)
+            {
+                buyerDTO.Id = buyer.Id;
+                buyerDTO.Name = buyer.Name;
+                buyerDTO.Age = buyer.Age;
+                buyerDTO.Money = buyer.Money;
+                buyerDTO.PhoneNumber = buyer.PhoneNumber;
+                buyerDTO.Email = buyer.Email;
+                buyerDTO.Sex = buyer.Sex;
+            }
+
+            return buyerDTO;
         }
 
         public bool Save(BuyerDTO buyerDTO)

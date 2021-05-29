@@ -102,6 +102,12 @@ namespace MVC.SOAPService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PostBook", ReplyAction="http://tempuri.org/IService1/PostBookResponse")]
         System.Threading.Tasks.Task<string> PostBookAsync(ApplicationService.DTOs.BookDTO bookDTOs);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetBookById", ReplyAction="http://tempuri.org/IService1/GetBookByIdResponse")]
+        ApplicationService.DTOs.BookDTO GetBookById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetBookById", ReplyAction="http://tempuri.org/IService1/GetBookByIdResponse")]
+        System.Threading.Tasks.Task<ApplicationService.DTOs.BookDTO> GetBookByIdAsync(int id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteBook", ReplyAction="http://tempuri.org/IService1/DeleteBookResponse")]
         string DeleteBook(int id);
         
@@ -120,6 +126,12 @@ namespace MVC.SOAPService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PostBuyer", ReplyAction="http://tempuri.org/IService1/PostBuyerResponse")]
         System.Threading.Tasks.Task<string> PostBuyerAsync(ApplicationService.DTOs.BuyerDTO buyerDTOs);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetBuyerById", ReplyAction="http://tempuri.org/IService1/GetBuyerByIdResponse")]
+        ApplicationService.DTOs.BuyerDTO GetBuyerById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetBuyerById", ReplyAction="http://tempuri.org/IService1/GetBuyerByIdResponse")]
+        System.Threading.Tasks.Task<ApplicationService.DTOs.BuyerDTO> GetBuyerByIdAsync(int id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteBuyer", ReplyAction="http://tempuri.org/IService1/DeleteBuyerResponse")]
         string DeleteBuyer(int id);
         
@@ -137,6 +149,12 @@ namespace MVC.SOAPService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PostOrder", ReplyAction="http://tempuri.org/IService1/PostOrderResponse")]
         System.Threading.Tasks.Task<string> PostOrderAsync(ApplicationService.DTOs.OrderDTO orderDTOs);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetOrderById", ReplyAction="http://tempuri.org/IService1/GetOrderByIdResponse")]
+        ApplicationService.DTOs.OrderDTO GetOrderById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetOrderById", ReplyAction="http://tempuri.org/IService1/GetOrderByIdResponse")]
+        System.Threading.Tasks.Task<ApplicationService.DTOs.OrderDTO> GetOrderByIdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteOrder", ReplyAction="http://tempuri.org/IService1/DeleteOrderResponse")]
         string DeleteOrder(int id);
@@ -204,6 +222,14 @@ namespace MVC.SOAPService {
             return base.Channel.PostBookAsync(bookDTOs);
         }
         
+        public ApplicationService.DTOs.BookDTO GetBookById(int id) {
+            return base.Channel.GetBookById(id);
+        }
+        
+        public System.Threading.Tasks.Task<ApplicationService.DTOs.BookDTO> GetBookByIdAsync(int id) {
+            return base.Channel.GetBookByIdAsync(id);
+        }
+        
         public string DeleteBook(int id) {
             return base.Channel.DeleteBook(id);
         }
@@ -228,6 +254,14 @@ namespace MVC.SOAPService {
             return base.Channel.PostBuyerAsync(buyerDTOs);
         }
         
+        public ApplicationService.DTOs.BuyerDTO GetBuyerById(int id) {
+            return base.Channel.GetBuyerById(id);
+        }
+        
+        public System.Threading.Tasks.Task<ApplicationService.DTOs.BuyerDTO> GetBuyerByIdAsync(int id) {
+            return base.Channel.GetBuyerByIdAsync(id);
+        }
+        
         public string DeleteBuyer(int id) {
             return base.Channel.DeleteBuyer(id);
         }
@@ -250,6 +284,14 @@ namespace MVC.SOAPService {
         
         public System.Threading.Tasks.Task<string> PostOrderAsync(ApplicationService.DTOs.OrderDTO orderDTOs) {
             return base.Channel.PostOrderAsync(orderDTOs);
+        }
+        
+        public ApplicationService.DTOs.OrderDTO GetOrderById(int id) {
+            return base.Channel.GetOrderById(id);
+        }
+        
+        public System.Threading.Tasks.Task<ApplicationService.DTOs.OrderDTO> GetOrderByIdAsync(int id) {
+            return base.Channel.GetOrderByIdAsync(id);
         }
         
         public string DeleteOrder(int id) {

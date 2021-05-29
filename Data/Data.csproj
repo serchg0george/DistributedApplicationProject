@@ -60,6 +60,14 @@
     <Compile Include="Migrations\202105281716509_InitialMigration.designer.cs">
       <DependentUpon>202105281716509_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105291654221_SaveMigration.cs" />
+    <Compile Include="Migrations\202105291654221_SaveMigration.designer.cs">
+      <DependentUpon>202105291654221_SaveMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105291729426_SaveMigration1.cs" />
+    <Compile Include="Migrations\202105291729426_SaveMigration1.designer.cs">
+      <DependentUpon>202105291729426_SaveMigration1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -70,6 +78,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202105281716509_InitialMigration.resx">
       <DependentUpon>202105281716509_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105291654221_SaveMigration.resx">
+      <DependentUpon>202105291654221_SaveMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105291729426_SaveMigration1.resx">
+      <DependentUpon>202105291729426_SaveMigration1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -14,7 +14,7 @@ namespace Data.Entities
 
         public byte Age { get; set; }
 
-        public double Money { get; set; }
+        public decimal Money { get; set; }
 
         public int PhoneNumber { get; set; }
 

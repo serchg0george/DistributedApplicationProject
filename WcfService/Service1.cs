@@ -81,6 +81,7 @@ namespace WcfService
             return orderManagementService.Get();
         }
 
+
         private BookManagementService bookManagementService = new BookManagementService();
 
         private BuyerManagementService buyerManagementService = new BuyerManagementService();
@@ -121,6 +122,21 @@ namespace WcfService
             {
                 return "Order successfully saved!";
             }
+        }
+
+        public BookDTO GetBookById(int id)
+        {
+            return bookManagementService.GetById(id);
+        }
+
+        public BuyerDTO GetBuyerById(int id)
+        {
+            return buyerManagementService.GetById(id);
+        }
+
+        public OrderDTO GetOrderById(int id)
+        {
+            return orderManagementService.GetById(id);
         }
     }
 }

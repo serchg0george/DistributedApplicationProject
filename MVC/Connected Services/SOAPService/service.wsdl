@@ -32,6 +32,12 @@
   <wsdl:message name="IService1_PostBook_OutputMessage">
     <wsdl:part name="parameters" element="tns:PostBookResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetBookById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookById" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetBookById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookByIdResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_DeleteBook_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteBook" />
   </wsdl:message>
@@ -50,6 +56,12 @@
   <wsdl:message name="IService1_PostBuyer_OutputMessage">
     <wsdl:part name="parameters" element="tns:PostBuyerResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetBuyerById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBuyerById" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetBuyerById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBuyerByIdResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_DeleteBuyer_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteBuyer" />
   </wsdl:message>
@@ -67,6 +79,12 @@
   </wsdl:message>
   <wsdl:message name="IService1_PostOrder_OutputMessage">
     <wsdl:part name="parameters" element="tns:PostOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetOrderById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderById" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetOrderById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrderByIdResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_DeleteOrder_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteOrder" />
@@ -91,6 +109,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/PostBook" message="tns:IService1_PostBook_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/PostBookResponse" message="tns:IService1_PostBook_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetBookById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetBookById" message="tns:IService1_GetBookById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetBookByIdResponse" message="tns:IService1_GetBookById_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="DeleteBook">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteBook" message="tns:IService1_DeleteBook_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteBookResponse" message="tns:IService1_DeleteBook_OutputMessage" />
@@ -103,6 +125,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/PostBuyer" message="tns:IService1_PostBuyer_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/PostBuyerResponse" message="tns:IService1_PostBuyer_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetBuyerById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetBuyerById" message="tns:IService1_GetBuyerById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetBuyerByIdResponse" message="tns:IService1_GetBuyerById_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="DeleteBuyer">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteBuyer" message="tns:IService1_DeleteBuyer_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteBuyerResponse" message="tns:IService1_DeleteBuyer_OutputMessage" />
@@ -114,6 +140,10 @@
     <wsdl:operation name="PostOrder">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/PostOrder" message="tns:IService1_PostOrder_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/PostOrderResponse" message="tns:IService1_PostOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetOrderById" message="tns:IService1_GetOrderById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetOrderByIdResponse" message="tns:IService1_GetOrderById_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteOrder">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteOrder" message="tns:IService1_DeleteOrder_InputMessage" />
@@ -158,6 +188,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetBookById">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetBookById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="DeleteBook">
       <soap:operation soapAction="http://tempuri.org/IService1/DeleteBook" style="document" />
       <wsdl:input>
@@ -185,6 +224,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetBuyerById">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetBuyerById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="DeleteBuyer">
       <soap:operation soapAction="http://tempuri.org/IService1/DeleteBuyer" style="document" />
       <wsdl:input>
@@ -205,6 +253,15 @@
     </wsdl:operation>
     <wsdl:operation name="PostOrder">
       <soap:operation soapAction="http://tempuri.org/IService1/PostOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrderById">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetOrderById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

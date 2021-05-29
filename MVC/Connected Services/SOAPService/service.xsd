@@ -56,6 +56,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetBookById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBookByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ApplicationService.DTOs" minOccurs="0" name="GetBookByIdResult" nillable="true" type="q5:BookDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="DeleteBook">
     <xs:complexType>
       <xs:sequence>
@@ -78,14 +92,14 @@
   <xs:element name="GetBuyersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ApplicationService.DTOs" minOccurs="0" name="GetBuyersResult" nillable="true" type="q5:ArrayOfBuyerDTO" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ApplicationService.DTOs" minOccurs="0" name="GetBuyersResult" nillable="true" type="q6:ArrayOfBuyerDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="PostBuyer">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ApplicationService.DTOs" minOccurs="0" name="buyerDTOs" nillable="true" type="q6:BuyerDTO" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ApplicationService.DTOs" minOccurs="0" name="buyerDTOs" nillable="true" type="q7:BuyerDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -93,6 +107,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="PostBuyerResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBuyerById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBuyerByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ApplicationService.DTOs" minOccurs="0" name="GetBuyerByIdResult" nillable="true" type="q8:BuyerDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -118,14 +146,14 @@
   <xs:element name="GetOrdersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ApplicationService.DTOs" minOccurs="0" name="GetOrdersResult" nillable="true" type="q7:ArrayOfOrderDTO" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ApplicationService.DTOs" minOccurs="0" name="GetOrdersResult" nillable="true" type="q9:ArrayOfOrderDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="PostOrder">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ApplicationService.DTOs" minOccurs="0" name="orderDTOs" nillable="true" type="q8:OrderDTO" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ApplicationService.DTOs" minOccurs="0" name="orderDTOs" nillable="true" type="q10:OrderDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -133,6 +161,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="PostOrderResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrderById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrderByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ApplicationService.DTOs" minOccurs="0" name="GetOrderByIdResult" nillable="true" type="q11:OrderDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
