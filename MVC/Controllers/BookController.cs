@@ -15,15 +15,15 @@ namespace MVC.Controllers
         {
             List<BookVM> booksVM = new List<BookVM>();
 
-            using(SOAPService.Service1Client service = new SOAPService.Service1Client())
+            using (SOAPService.Service1Client service = new SOAPService.Service1Client())
             {
-                foreach(var item in service.GetBooks())
+                foreach (var item in service.GetBooks())
                 {
                     booksVM.Add(new BookVM(item));
                 }
-                
+
             }
-               
+
             return View(booksVM);
         }
 
@@ -33,7 +33,7 @@ namespace MVC.Controllers
             {
                 using (SOAPService.Service1Client service = new SOAPService.Service1Client())
                 {
-                    if(ModelState.IsValid)
+                    if (ModelState.IsValid)
                     {
                         BookDTO bookDTO = new BookDTO
                         {
@@ -70,6 +70,15 @@ namespace MVC.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Details(int id)
+        {
+            BookVM bookVM = new BookVM();
+            using (SOAPService.Service1Client service = new SOAPService.Service1Client())
+            {
+                bookVM = new BookVM(service.GetBookById(id));
+            }
+            return View(bookVM);
+        }
 
     }
 }

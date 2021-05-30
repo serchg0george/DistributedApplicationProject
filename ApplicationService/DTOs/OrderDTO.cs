@@ -21,7 +21,7 @@ namespace ApplicationService.DTOs
 
         public string DeliveryService { get; set; }
 
-        public string Adress { get; set; }
+        public string Address { get; set; }
 
         [Required]
         public DateTime TimeOfOrder { get; set; }

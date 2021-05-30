@@ -44,12 +44,10 @@ namespace ApplicationService.Implementations
                         Email = item.Buyer.Email,
                         Sex = item.Buyer.Sex
                     },
-                    Adress = item.Adress,
+                    Address = item.Address,
                     DeliveryService = item.DeliveryService,
                     FinalPrice = item.FinalPrice,
                     TimeOfOrder = item.TimeOfOrder
-
-
                 });
             }
 
@@ -85,7 +83,7 @@ namespace ApplicationService.Implementations
                     Email = item.Buyer.Email,
                     Sex = item.Buyer.Sex
                 },
-                Adress = item.Adress,
+                Address = item.Address,
                 DeliveryService = item.DeliveryService,
                 FinalPrice = item.FinalPrice,
                 TimeOfOrder = item.TimeOfOrder
@@ -110,7 +108,7 @@ namespace ApplicationService.Implementations
                 Id = orderDTO.Id,
                 BookId = orderDTO.BookId,
                 BuyerId = orderDTO.BuyerId,
-                Adress = orderDTO.Adress,
+                Address = orderDTO.Address,
                 DeliveryService = orderDTO.DeliveryService,
                 FinalPrice = orderDTO.FinalPrice,
                 TimeOfOrder = orderDTO.TimeOfOrder

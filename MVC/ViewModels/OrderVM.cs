@@ -53,7 +53,7 @@ namespace MVC.ViewModels
                 Email = orderDTO.Buyer.Email,
                 Sex = orderDTO.Buyer.Sex
             };
-            Adress = orderDTO.Adress;
+            Adress = orderDTO.Address;
             DeliveryService = orderDTO.DeliveryService;
             FinalPrice = orderDTO.FinalPrice;
             TimeOfOrder = orderDTO.TimeOfOrder;

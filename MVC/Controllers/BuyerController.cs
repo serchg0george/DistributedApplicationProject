@@ -69,5 +69,14 @@ namespace MVC.Controllers
             }
             return RedirectToAction("Index");
         }
+        public ActionResult Details(int id)
+        {
+            BuyerVM buyerVM = new BuyerVM();
+            using (SOAPService.Service1Client service = new SOAPService.Service1Client())
+            {
+                buyerVM = new BuyerVM(service.GetBuyerById(id));
+            }
+            return View(buyerVM);
+        }
     }
 }
