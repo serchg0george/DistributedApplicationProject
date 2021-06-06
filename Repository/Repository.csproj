@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A026FF34-D16F-41FD-B4A7-98D82B9940F4}</ProjectGuid>
+    <ProjectGuid>{F7DAAE13-CE7E-4559-89BE-9CD5F783F391}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ApplicationService</RootNamespace>
-    <AssemblyName>ApplicationService</AssemblyName>
+    <RootNamespace>Repository</RootNamespace>
+    <AssemblyName>Repository</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -51,22 +51,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTOs\BookDTO.cs" />
-    <Compile Include="DTOs\BuyerDTO.cs" />
-    <Compile Include="DTOs\OrderDTO.cs" />
-    <Compile Include="Implementations\BookManagementService.cs" />
-    <Compile Include="Implementations\BuyerManagementService.cs" />
-    <Compile Include="Implementations\OrderManagementService.cs" />
+    <Compile Include="Implimentations\GenericRepository.cs" />
+    <Compile Include="Implimentations\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">
       <Project>{57223E6B-6A6A-421F-A37F-928C8F0AF024}</Project>
       <Name>Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Repository\Repository.csproj">
-      <Project>{F7DAAE13-CE7E-4559-89BE-9CD5F783F391}</Project>
-      <Name>Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

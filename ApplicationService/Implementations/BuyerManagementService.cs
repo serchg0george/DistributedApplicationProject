@@ -1,6 +1,7 @@
 ﻿using ApplicationService.DTOs;
 using Data.Context;
 using Data.Entities;
+using Repositories.Implementations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,25 +14,43 @@ namespace ApplicationService.Implementations
     {
         private BookShop2SystemDBContext ctx = new BookShop2SystemDBContext();
 
-        public List<BuyerDTO> Get()
+        public List<BuyerDTO> Get(string query)
         {
             List<BuyerDTO> buyerDTOs = new List<BuyerDTO>();
 
-            foreach (var item in ctx.Buyers.ToList())
-            {
-                buyerDTOs.Add(new BuyerDTO
+            using (UnitOfWork unitOfWork = new UnitOfWork())
+                if (query == null)
                 {
-                    Id = item.Id,
-                    Name = item.Name,
-                    Age = item.Age,
-                    Money = item.Money,
-                    PhoneNumber = item.PhoneNumber,
-                    Email = item.Email,                  
-                    Sex = item.Sex
-                    
-                });
-            }
-
+                    foreach (var item in ctx.Buyers.ToList())
+                    {
+                        buyerDTOs.Add(new BuyerDTO
+                        {
+                            Id = item.Id,
+                            Name = item.Name,
+                            Age = item.Age,
+                            Money = item.Money,
+                            PhoneNumber = item.PhoneNumber,
+                            Email = item.Email,
+                            Sex = item.Sex
+                        });
+                    }
+                }
+                else
+                {
+                    foreach (var item in unitOfWork.BuyerRepository.GetByQuery().Where(c => c.Name.Contains(query)).ToList())
+                    {
+                        buyerDTOs.Add(new BuyerDTO
+                        {
+                            Id = item.Id,
+                            Name = item.Name,
+                            Age = item.Age,
+                            Money = item.Money,
+                            PhoneNumber = item.PhoneNumber,
+                            Email = item.Email,
+                            Sex = item.Sex
+                        });
+                    }
+                }
             return buyerDTOs;
         }
 

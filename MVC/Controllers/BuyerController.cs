@@ -11,13 +11,13 @@ namespace MVC.Controllers
     public class BuyerController : Controller
     {
         // GET: Buyer
-        public ActionResult Index()
+        public ActionResult Index(string query)
         {
             List<BuyerVM> buyersVM = new List<BuyerVM>();
 
             using (SOAPService.Service1Client service = new SOAPService.Service1Client())
             {
-                foreach (var item in service.GetBuyers())
+                foreach (var item in service.GetBuyers(query))
                 {
                     buyersVM.Add(new BuyerVM(item));
                 }

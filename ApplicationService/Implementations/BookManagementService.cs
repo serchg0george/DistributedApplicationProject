@@ -1,6 +1,7 @@
 ﻿using ApplicationService.DTOs;
 using Data.Context;
 using Data.Entities;
+using Repositories.Implementations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,40 +14,78 @@ namespace ApplicationService.Implementations
     {
         private BookShop2SystemDBContext ctx = new BookShop2SystemDBContext();
 
-        public List<BookDTO> Get()
+        public List<BookDTO> Get(string query)
         {
             List<BookDTO> bookDTOs = new List<BookDTO>();
 
-            foreach (var item in ctx.Books.ToList())
+            using (UnitOfWork unitOfWork = new UnitOfWork())
             {
-                bookDTOs.Add(new BookDTO
+                if (query == null)
                 {
-                    Id = item.Id,
-                    Author = item.Author,
-                    Name = item.Name,
-                    Pages = item.Pages,
-                    Price = item.Price,
-                    Publisher = item.Publisher,
-                    Year = item.Year
-                });
+                    foreach (var item in unitOfWork.BookRepository.Get())
+                    {
+                        bookDTOs.Add(new BookDTO
+                        {
+                            Id = item.Id,
+                            Author = item.Author,
+                            Name = item.Name,
+                            Pages = item.Pages,
+                            Price = item.Price,
+                            Publisher = item.Publisher,
+                            Year = item.Year
+                        });
+                    }
+                }
+                else
+                {
+                    foreach (var item in unitOfWork.BookRepository.GetByQuery().Where(c => c.Name.Contains(query)).ToList())
+                    {
+                        bookDTOs.Add(new BookDTO
+                        {
+                            Id = item.Id,
+                            Author = item.Author,
+                            Name = item.Name,
+                            Pages = item.Pages,
+                            Price = item.Price,
+                            Publisher = item.Publisher,
+                            Year = item.Year
+                        });
+                    }
+                }
             }
-
             return bookDTOs;
         }
 
         public BookDTO GetById(int id)
         {
+
             BookDTO bookDTO = new BookDTO();
-            Book book = ctx.Books.Find(id);
-            if(book != null)
+
+            using (UnitOfWork unitOfWork = new UnitOfWork())
             {
-                bookDTO.Id = book.Id;
-                bookDTO.Author = book.Author;
-                bookDTO.Name = book.Name;
-                bookDTO.Pages = book.Pages;
-                bookDTO.Price = book.Price;
-                bookDTO.Publisher = book.Publisher;
-                bookDTO.Year = book.Year;
+                Book book = unitOfWork.BookRepository.GetByID(id);
+
+                bookDTO = new BookDTO
+                {
+                    Id = book.Id,
+                    Author = book.Author,
+                    Name = book.Name,
+                    Pages = book.Pages,
+                    Price = book.Price,
+                    Publisher = book.Publisher,
+                    Year = book.Year
+                };
+/*                if (book != null)
+                {
+                    bookDTO.Id = book.Id;
+                    bookDTO.Author = book.Author;
+                    bookDTO.Name = book.Name;
+                    bookDTO.Pages = book.Pages;
+                    bookDTO.Price = book.Price;
+                    bookDTO.Publisher = book.Publisher;
+                    bookDTO.Year = book.Year;
+                }*/
+
             }
 
             return bookDTO;
@@ -54,8 +93,9 @@ namespace ApplicationService.Implementations
 
         public bool Save(BookDTO bookDTO)
         {
-            Book Book = new Book
+            Book Book = new Book()
             {
+                Id = bookDTO.Id,
                 Author = bookDTO.Author,
                 Name = bookDTO.Name,
                 Pages = bookDTO.Pages,
@@ -65,8 +105,20 @@ namespace ApplicationService.Implementations
             };
             try
             {
-                ctx.Books.Add(Book);
-                ctx.SaveChanges();
+                using (UnitOfWork unitOfWork = new UnitOfWork())
+                {
+                    if (bookDTO.Id == 0)
+                    {
+                        unitOfWork.BookRepository.Insert(Book);
+                    }
+                    else
+                    {
+                        unitOfWork.BookRepository.Update(Book);
+                    }
+
+                    unitOfWork.Save();
+                }
+
                 return true;
             }
             catch

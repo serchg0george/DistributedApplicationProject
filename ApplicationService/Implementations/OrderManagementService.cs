@@ -1,6 +1,7 @@
 ﻿using ApplicationService.DTOs;
 using Data.Context;
 using Data.Entities;
+using Repositories.Implementations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,43 +14,85 @@ namespace ApplicationService.Implementations
     {
         private BookShop2SystemDBContext ctx = new BookShop2SystemDBContext();
 
-        public List<OrderDTO> Get()
+        public List<OrderDTO> Get(string query)
         {
             List<OrderDTO> orderDTOs = new List<OrderDTO>();
 
-            foreach (var item in ctx.Orders.ToList())
-            {
-                orderDTOs.Add(new OrderDTO
+            using (UnitOfWork unitOfWork = new UnitOfWork())
+
+                if (query == null)
                 {
-                    Id = item.Id,
-                    BookId = item.BookId,
-                    Book = new BookDTO
+                    foreach (var item in unitOfWork.OrderRepository.Get())
                     {
-                        Id = item.BookId,
-                        Author = item.Book.Author,
-                        Name = item.Book.Name,
-                        Pages = item.Book.Pages,
-                        Price = item.Book.Price,
-                        Publisher = item.Book.Publisher,
-                        Year = item.Book.Year
-                    },  
-                    BuyerId = item.BuyerId,
-                    Buyer = new BuyerDTO
+                        orderDTOs.Add(new OrderDTO
+                        {
+                            Id = item.Id,
+                            BookId = item.BookId,
+                            Book = new BookDTO
+                            {
+                                Id = item.BookId,
+                                Author = item.Book.Author,
+                                Name = item.Book.Name,
+                                Pages = item.Book.Pages,
+                                Price = item.Book.Price,
+                                Publisher = item.Book.Publisher,
+                                Year = item.Book.Year
+                            },
+                            BuyerId = item.BuyerId,
+                            Buyer = new BuyerDTO
+                            {
+                                Id = item.BuyerId,
+                                Name = item.Buyer.Name,
+                                Age = item.Buyer.Age,
+                                Money = item.Buyer.Money,
+                                PhoneNumber = item.Buyer.PhoneNumber,
+                                Email = item.Buyer.Email,
+                                Sex = item.Buyer.Sex
+                            },
+                            Address = item.Address,
+                            DeliveryService = item.DeliveryService,
+                            FinalPrice = item.FinalPrice,
+                            TimeOfOrder = item.TimeOfOrder
+                        });
+                    }
+                }
+                else
+                {
+                    foreach (var item in unitOfWork.OrderRepository.GetByQuery().Where(c => c.DeliveryService.Contains(query)).ToList())
                     {
-                        Id = item.BuyerId,
-                        Name = item.Buyer.Name,
-                        Age = item.Buyer.Age,
-                        Money = item.Buyer.Money,
-                        PhoneNumber = item.Buyer.PhoneNumber,
-                        Email = item.Buyer.Email,
-                        Sex = item.Buyer.Sex
-                    },
-                    Address = item.Address,
-                    DeliveryService = item.DeliveryService,
-                    FinalPrice = item.FinalPrice,
-                    TimeOfOrder = item.TimeOfOrder
-                });
-            }
+                        orderDTOs.Add(new OrderDTO
+                        {
+                            Id = item.Id,
+                            BookId = item.BookId,
+                            Book = new BookDTO
+                            {
+                                Id = item.BookId,
+                                Author = item.Book.Author,
+                                Name = item.Book.Name,
+                                Pages = item.Book.Pages,
+                                Price = item.Book.Price,
+                                Publisher = item.Book.Publisher,
+                                Year = item.Book.Year
+                            },
+                            BuyerId = item.BuyerId,
+                            Buyer = new BuyerDTO
+                            {
+                                Id = item.BuyerId,
+                                Name = item.Buyer.Name,
+                                Age = item.Buyer.Age,
+                                Money = item.Buyer.Money,
+                                PhoneNumber = item.Buyer.PhoneNumber,
+                                Email = item.Buyer.Email,
+                                Sex = item.Buyer.Sex
+                            },
+                            Address = item.Address,
+                            DeliveryService = item.DeliveryService,
+                            FinalPrice = item.FinalPrice,
+                            TimeOfOrder = item.TimeOfOrder
+                        });
+                    }
+
+                }
 
             return orderDTOs;
         }

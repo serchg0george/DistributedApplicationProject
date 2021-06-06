@@ -91,10 +91,10 @@ namespace MVC.SOAPService {
         System.Threading.Tasks.Task<MVC.SOAPService.CompositeType> GetDataUsingDataContractAsync(MVC.SOAPService.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetBooks", ReplyAction="http://tempuri.org/IService1/GetBooksResponse")]
-        ApplicationService.DTOs.BookDTO[] GetBooks();
+        ApplicationService.DTOs.BookDTO[] GetBooks(string query);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetBooks", ReplyAction="http://tempuri.org/IService1/GetBooksResponse")]
-        System.Threading.Tasks.Task<ApplicationService.DTOs.BookDTO[]> GetBooksAsync();
+        System.Threading.Tasks.Task<ApplicationService.DTOs.BookDTO[]> GetBooksAsync(string query);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PostBook", ReplyAction="http://tempuri.org/IService1/PostBookResponse")]
         string PostBook(ApplicationService.DTOs.BookDTO bookDTOs);
@@ -115,10 +115,10 @@ namespace MVC.SOAPService {
         System.Threading.Tasks.Task<string> DeleteBookAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetBuyers", ReplyAction="http://tempuri.org/IService1/GetBuyersResponse")]
-        ApplicationService.DTOs.BuyerDTO[] GetBuyers();
+        ApplicationService.DTOs.BuyerDTO[] GetBuyers(string query);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetBuyers", ReplyAction="http://tempuri.org/IService1/GetBuyersResponse")]
-        System.Threading.Tasks.Task<ApplicationService.DTOs.BuyerDTO[]> GetBuyersAsync();
+        System.Threading.Tasks.Task<ApplicationService.DTOs.BuyerDTO[]> GetBuyersAsync(string query);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PostBuyer", ReplyAction="http://tempuri.org/IService1/PostBuyerResponse")]
         string PostBuyer(ApplicationService.DTOs.BuyerDTO buyerDTOs);
@@ -139,10 +139,10 @@ namespace MVC.SOAPService {
         System.Threading.Tasks.Task<string> DeleteBuyerAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetOrders", ReplyAction="http://tempuri.org/IService1/GetOrdersResponse")]
-        ApplicationService.DTOs.OrderDTO[] GetOrders();
+        ApplicationService.DTOs.OrderDTO[] GetOrders(string query);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetOrders", ReplyAction="http://tempuri.org/IService1/GetOrdersResponse")]
-        System.Threading.Tasks.Task<ApplicationService.DTOs.OrderDTO[]> GetOrdersAsync();
+        System.Threading.Tasks.Task<ApplicationService.DTOs.OrderDTO[]> GetOrdersAsync(string query);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/PostOrder", ReplyAction="http://tempuri.org/IService1/PostOrderResponse")]
         string PostOrder(ApplicationService.DTOs.OrderDTO orderDTOs);
@@ -206,12 +206,12 @@ namespace MVC.SOAPService {
             return base.Channel.GetDataUsingDataContractAsync(composite);
         }
         
-        public ApplicationService.DTOs.BookDTO[] GetBooks() {
-            return base.Channel.GetBooks();
+        public ApplicationService.DTOs.BookDTO[] GetBooks(string query) {
+            return base.Channel.GetBooks(query);
         }
         
-        public System.Threading.Tasks.Task<ApplicationService.DTOs.BookDTO[]> GetBooksAsync() {
-            return base.Channel.GetBooksAsync();
+        public System.Threading.Tasks.Task<ApplicationService.DTOs.BookDTO[]> GetBooksAsync(string query) {
+            return base.Channel.GetBooksAsync(query);
         }
         
         public string PostBook(ApplicationService.DTOs.BookDTO bookDTOs) {
@@ -238,12 +238,12 @@ namespace MVC.SOAPService {
             return base.Channel.DeleteBookAsync(id);
         }
         
-        public ApplicationService.DTOs.BuyerDTO[] GetBuyers() {
-            return base.Channel.GetBuyers();
+        public ApplicationService.DTOs.BuyerDTO[] GetBuyers(string query) {
+            return base.Channel.GetBuyers(query);
         }
         
-        public System.Threading.Tasks.Task<ApplicationService.DTOs.BuyerDTO[]> GetBuyersAsync() {
-            return base.Channel.GetBuyersAsync();
+        public System.Threading.Tasks.Task<ApplicationService.DTOs.BuyerDTO[]> GetBuyersAsync(string query) {
+            return base.Channel.GetBuyersAsync(query);
         }
         
         public string PostBuyer(ApplicationService.DTOs.BuyerDTO buyerDTOs) {
@@ -270,12 +270,12 @@ namespace MVC.SOAPService {
             return base.Channel.DeleteBuyerAsync(id);
         }
         
-        public ApplicationService.DTOs.OrderDTO[] GetOrders() {
-            return base.Channel.GetOrders();
+        public ApplicationService.DTOs.OrderDTO[] GetOrders(string query) {
+            return base.Channel.GetOrders(query);
         }
         
-        public System.Threading.Tasks.Task<ApplicationService.DTOs.OrderDTO[]> GetOrdersAsync() {
-            return base.Channel.GetOrdersAsync();
+        public System.Threading.Tasks.Task<ApplicationService.DTOs.OrderDTO[]> GetOrdersAsync(string query) {
+            return base.Channel.GetOrdersAsync(query);
         }
         
         public string PostOrder(ApplicationService.DTOs.OrderDTO orderDTOs) {

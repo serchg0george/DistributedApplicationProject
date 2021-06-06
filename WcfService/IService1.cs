@@ -21,7 +21,7 @@ namespace WcfService
         // TODO: Add your service operations here
 
         [OperationContract]
-        List<BookDTO> GetBooks();
+        List<BookDTO> GetBooks(string query);
 
         [OperationContract]
         string PostBook(BookDTO bookDTOs);
@@ -34,7 +34,7 @@ namespace WcfService
 
 
         [OperationContract]
-        List<BuyerDTO> GetBuyers();
+        List<BuyerDTO> GetBuyers(string query);
 
         [OperationContract]
         string PostBuyer(BuyerDTO buyerDTOs);
@@ -46,7 +46,7 @@ namespace WcfService
         string DeleteBuyer(int id);
 
         [OperationContract]
-        List<OrderDTO> GetOrders();
+        List<OrderDTO> GetOrders(string query);
 
         [OperationContract]
         string PostOrder(OrderDTO orderDTOs);

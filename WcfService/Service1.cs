@@ -48,14 +48,14 @@ namespace WcfService
             }
         }
 
-        public List<BookDTO> GetBooks()
+        public List<BookDTO> GetBooks(string query)
         {
-            return bookManagementService.Get();
+            return bookManagementService.Get(query);
         }
 
-        public List<BuyerDTO> GetBuyers()
+        public List<BuyerDTO> GetBuyers(string query)
         {
-            return buyerManagementService.Get();
+            return buyerManagementService.Get(query);
         }
 
         public string GetData(int value)
@@ -76,9 +76,9 @@ namespace WcfService
             return composite;
         }
 
-        public List<OrderDTO> GetOrders()
+        public List<OrderDTO> GetOrders(string query)
         {
-            return orderManagementService.Get();
+            return orderManagementService.Get(query);
         }
 
 

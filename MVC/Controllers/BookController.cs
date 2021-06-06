@@ -13,13 +13,13 @@ namespace MVC.Controllers
     public class BookController : Controller
     {
         // GET: Book
-        public ActionResult Index()
+        public ActionResult Index(string query)
         {
             List<BookVM> booksVM = new List<BookVM>();
 
             using (SOAPService.Service1Client service = new SOAPService.Service1Client())
             {
-                foreach (var item in service.GetBooks())
+                foreach (var item in service.GetBooks(query))
                 {
                     booksVM.Add(new BookVM(item));
                 }
@@ -80,6 +80,52 @@ namespace MVC.Controllers
                 bookVM = new BookVM(service.GetBookById(id));
             }
             return View(bookVM);
+        }
+
+        public ActionResult Edit(int id, string query)
+        {
+            BookVM bookVM = new BookVM();
+            using (SOAPService.Service1Client service = new SOAPService.Service1Client())
+            {
+                bookVM = new BookVM(service.GetBookById(id));
+            }
+            return View(bookVM);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(BookVM bookVM)
+        {
+            try
+            {
+                using (SOAPService.Service1Client service = new SOAPService.Service1Client())
+                {
+                    if (ModelState.IsValid)
+                    {
+                        BookDTO bookDTO = new BookDTO
+                        {
+                            Id = bookVM.Id,
+                            Author = bookVM.Author,
+                            Name = bookVM.Name,
+                            Pages = bookVM.Pages,
+                            Price = bookVM.Price,
+                            Publisher = bookVM.Publisher,
+                            Year = bookVM.Year
+
+                        };
+                        service.PostBook(bookDTO);
+
+                        return RedirectToAction("Index");
+                    }
+
+                    return View();
+
+                }
+            }
+
+            catch
+            {
+                return View();
+            }
         }
 
     }

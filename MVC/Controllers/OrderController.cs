@@ -11,13 +11,13 @@ namespace MVC.Controllers
     public class OrderController : Controller
     {
         // GET: Order
-        public ActionResult Index()
+        public ActionResult Index(string query)
         {
             List<OrderVM> ordersVM = new List<OrderVM>();
 
             using (SOAPService.Service1Client service = new SOAPService.Service1Client())
             {
-                foreach (var item in service.GetOrders())
+                foreach (var item in service.GetOrders(query))
                 {
                     ordersVM.Add(new OrderVM(item));
                 }
@@ -41,23 +41,24 @@ namespace MVC.Controllers
             return View(orderVM);
         }
 
-        public ActionResult Create()
+        public ActionResult Create(string query)
         {
-            ViewBag.Books = Helpers.LoadDataUtilities.LoadBookData();
-            ViewBag.Buyers = Helpers.LoadDataUtilities.LoadBuyerData();
+            ViewBag.Books = Helpers.LoadDataUtilities.LoadBookData(query);
+            ViewBag.Buyers = Helpers.LoadDataUtilities.LoadBuyerData(query);
 
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(OrderVM orderVM)
+        public ActionResult Create(OrderVM orderVM, string query)
         {
             try
             {
                 using (SOAPService.Service1Client service = new SOAPService.Service1Client())
                 {
                     OrderDTO orderDTO = new OrderDTO
+                    
                     {
                         BookId = orderVM.BookId,
                         Book = new BookDTO
@@ -85,8 +86,8 @@ namespace MVC.Controllers
             }
             catch
             {
-                ViewBag.Books = Helpers.LoadDataUtilities.LoadBookData();
-                ViewBag.Buyers = Helpers.LoadDataUtilities.LoadBuyerData();
+                ViewBag.Books = Helpers.LoadDataUtilities.LoadBookData(query);
+                ViewBag.Buyers = Helpers.LoadDataUtilities.LoadBuyerData(query);
 
                 return View();
             }
