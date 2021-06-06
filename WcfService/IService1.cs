@@ -32,6 +32,7 @@ namespace WcfService
         [OperationContract]
         string DeleteBook(int id);
 
+
         [OperationContract]
         List<BuyerDTO> GetBuyers();
 

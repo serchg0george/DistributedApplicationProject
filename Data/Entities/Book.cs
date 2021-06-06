@@ -18,7 +18,7 @@ namespace Data.Entities
 
         public int Pages { get; set; }
 
-        public double Price { get; set; }
+        public decimal Price { get; set; }
 
         public string Publisher { get; set; }
 

@@ -24,7 +24,7 @@ namespace MVC.ViewModels
         [Required]
         public DateTime TimeOfOrder { get; set; }
 
-        public double FinalPrice { get; set; }
+        public decimal FinalPrice { get; set; }
 
         public OrderVM() { }
 

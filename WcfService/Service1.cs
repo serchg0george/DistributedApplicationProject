@@ -100,6 +100,7 @@ namespace WcfService
             }
         }
 
+
         public string PostBuyer(BuyerDTO buyerDTOs)
         {
             if (!buyerManagementService.Save(buyerDTOs))

@@ -12,7 +12,7 @@
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Pages" type="xs:int" />
-      <xs:element minOccurs="0" name="Price" type="xs:double" />
+      <xs:element minOccurs="0" name="Price" type="xs:decimal" />
       <xs:element minOccurs="0" name="Publisher" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Year" type="xs:dateTime" />
     </xs:sequence>
@@ -44,13 +44,13 @@
   <xs:element name="ArrayOfOrderDTO" nillable="true" type="tns:ArrayOfOrderDTO" />
   <xs:complexType name="OrderDTO">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Adress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Book" nillable="true" type="tns:BookDTO" />
       <xs:element minOccurs="0" name="BookId" type="xs:int" />
       <xs:element minOccurs="0" name="Buyer" nillable="true" type="tns:BuyerDTO" />
       <xs:element minOccurs="0" name="BuyerId" type="xs:int" />
       <xs:element minOccurs="0" name="DeliveryService" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FinalPrice" type="xs:double" />
+      <xs:element minOccurs="0" name="FinalPrice" type="xs:decimal" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="TimeOfOrder" type="xs:dateTime" />
     </xs:sequence>
