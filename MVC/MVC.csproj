@@ -211,6 +211,8 @@
     <Content Include="Views\Order\Details.cshtml" />
     <Content Include="Views\Order\Create.cshtml" />
     <Content Include="Views\Book\Edit.cshtml" />
+    <Content Include="Views\Buyer\Edit.cshtml" />
+    <Content Include="Views\Order\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

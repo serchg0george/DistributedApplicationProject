@@ -75,16 +75,6 @@ namespace ApplicationService.Implementations
                     Publisher = book.Publisher,
                     Year = book.Year
                 };
-/*                if (book != null)
-                {
-                    bookDTO.Id = book.Id;
-                    bookDTO.Author = book.Author;
-                    bookDTO.Name = book.Name;
-                    bookDTO.Pages = book.Pages;
-                    bookDTO.Price = book.Price;
-                    bookDTO.Publisher = book.Publisher;
-                    bookDTO.Year = book.Year;
-                }*/
 
             }
 

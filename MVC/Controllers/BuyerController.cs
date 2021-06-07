@@ -78,5 +78,51 @@ namespace MVC.Controllers
             }
             return View(buyerVM);
         }
+
+        public ActionResult Edit(int id, string query)
+        {
+            BuyerVM buyerVM = new BuyerVM();
+            using (SOAPService.Service1Client service = new SOAPService.Service1Client())
+            {
+                buyerVM = new BuyerVM(service.GetBuyerById(id));
+            }
+            return View(buyerVM);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(BuyerVM buyerVM)
+        {
+            try
+            {
+                using (SOAPService.Service1Client service = new SOAPService.Service1Client())
+                {
+                    if (ModelState.IsValid)
+                    {
+                        BuyerDTO buyerDTO = new BuyerDTO
+                        {
+                            Id = buyerVM.Id,
+                            Name = buyerVM.Name,
+                            Age = buyerVM.Age,
+                            Money = buyerVM.Money,
+                            PhoneNumber = buyerVM.PhoneNumber,
+                            Email = buyerVM.Email,
+                            Sex = buyerVM.Sex
+
+                        };
+                        service.PostBuyer(buyerDTO);
+
+                        return RedirectToAction("Index");
+                    }
+
+                    return View();
+
+                }
+            }
+
+            catch
+            {
+                return View();
+            }
+        }
     }
 }

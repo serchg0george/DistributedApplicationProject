@@ -19,6 +19,7 @@ namespace ApplicationService.Implementations
             List<BuyerDTO> buyerDTOs = new List<BuyerDTO>();
 
             using (UnitOfWork unitOfWork = new UnitOfWork())
+            {
                 if (query == null)
                 {
                     foreach (var item in ctx.Buyers.ToList())
@@ -51,23 +52,30 @@ namespace ApplicationService.Implementations
                         });
                     }
                 }
-            return buyerDTOs;
+                return buyerDTOs;
+            }
+
         }
 
         public BuyerDTO GetById(int id)
         {
             BuyerDTO buyerDTO = new BuyerDTO();
-            Buyer buyer = ctx.Buyers.Find(id);
-            if (buyer != null)
+
+            using (UnitOfWork unitOfWork = new UnitOfWork())
             {
-                buyerDTO.Id = buyer.Id;
-                buyerDTO.Name = buyer.Name;
-                buyerDTO.Age = buyer.Age;
-                buyerDTO.Money = buyer.Money;
-                buyerDTO.PhoneNumber = buyer.PhoneNumber;
-                buyerDTO.Email = buyer.Email;
-                buyerDTO.Sex = buyer.Sex;
+                Buyer buyer = unitOfWork.BuyerRepository.GetByID(id);
+                buyerDTO = new BuyerDTO
+                {
+                    Id = buyer.Id,
+                    Name = buyer.Name,
+                    Age = buyer.Age,
+                    Money = buyer.Money,
+                    PhoneNumber = buyer.PhoneNumber,
+                    Email = buyer.Email,
+                    Sex = buyer.Sex
+                };
             }
+
 
             return buyerDTO;
         }
@@ -76,6 +84,7 @@ namespace ApplicationService.Implementations
         {
             Buyer Buyer = new Buyer
             {
+                Id = buyerDTO.Id,
                 Age = buyerDTO.Age,
                 Email = buyerDTO.Email,
                 Money = buyerDTO.Money,
@@ -86,8 +95,20 @@ namespace ApplicationService.Implementations
             };
             try
             {
-                ctx.Buyers.Add(Buyer);
-                ctx.SaveChanges();
+                using (UnitOfWork unitOfWork = new UnitOfWork())
+                {
+                    if (buyerDTO.Id == 0)
+                    {
+                        unitOfWork.BuyerRepository.Insert(Buyer);
+                    }
+                    else
+                    {
+                        unitOfWork.BuyerRepository.Update(Buyer);
+                    }
+
+                    unitOfWork.Save();
+                }
+
                 return true;
             }
             catch

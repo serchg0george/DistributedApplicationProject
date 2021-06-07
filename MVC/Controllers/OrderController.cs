@@ -102,6 +102,65 @@ namespace MVC.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Edit(int id, string query)
+        {
+            OrderVM orderVM = new OrderVM();
+            using (SOAPService.Service1Client service = new SOAPService.Service1Client())
+            {
+                orderVM = new OrderVM(service.GetOrderById(id));
+                ViewBag.Books = Helpers.LoadDataUtilities.LoadBookData(query);
+                ViewBag.Buyers = Helpers.LoadDataUtilities.LoadBuyerData(query);
+            }
+            return View(orderVM);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(OrderVM orderVM, string query)
+        {
+            try
+            {
+                using (SOAPService.Service1Client service = new SOAPService.Service1Client())
+                {
+                    if (ModelState.IsValid)
+                    {
+                        OrderDTO orderDTO = new OrderDTO
+                        {
+                            Id = orderVM.Id,
+                            BookId = orderVM.BookId,
+                            Book = new BookDTO
+                            {
+                                Id = orderVM.BookId
+                            },
+                            BuyerId = orderVM.BuyerId,
+                            Buyer = new BuyerDTO
+                            {
+                                Id = orderVM.BuyerId
+                            },
+                            Address = orderVM.Adress,
+                            DeliveryService = orderVM.DeliveryService,
+                            FinalPrice = orderVM.FinalPrice,
+                            TimeOfOrder = orderVM.TimeOfOrder
+
+                        };
+                        service.PostOrder(orderDTO);
+
+                        return RedirectToAction("Index");
+                    }
+
+                    return View();
+
+                }
+            }
+
+            catch
+            {
+                ViewBag.Books = Helpers.LoadDataUtilities.LoadBookData(query);
+                ViewBag.Buyers = Helpers.LoadDataUtilities.LoadBuyerData(query);
+
+                return View();
+            }
+        }
+
     }
 
 

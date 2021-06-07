@@ -158,8 +158,20 @@ namespace ApplicationService.Implementations
             };
             try
             {
-                ctx.Orders.Add(Order);
-                ctx.SaveChanges();
+                using (UnitOfWork unitOfWork = new UnitOfWork())
+                {
+                    if (orderDTO.Id == 0)
+                    {
+                        unitOfWork.OrderRepository.Insert(Order);
+                    }
+                    else
+                    {
+                        unitOfWork.OrderRepository.Update(Order);
+                    }
+
+                    unitOfWork.Save();
+                }
+
                 return true;
             }
             catch
