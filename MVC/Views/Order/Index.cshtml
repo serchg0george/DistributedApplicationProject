@@ -17,10 +17,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.BookId)
+            @Html.DisplayName("Book")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BuyerId)
+            @Html.DisplayName("Buyer")
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DeliveryService)
@@ -41,10 +41,10 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.BookId)
+                @Html.DisplayFor(modelItem => item.Book.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.BuyerId)
+                @Html.DisplayFor(modelItem => item.Buyer.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DeliveryService)

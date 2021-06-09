@@ -58,7 +58,7 @@ namespace ApplicationService.Implementations
                 }
                 else
                 {
-                    foreach (var item in unitOfWork.OrderRepository.GetByQuery().Where(c => c.DeliveryService.Contains(query)).ToList())
+                    foreach (var item in unitOfWork.OrderRepository.GetByQuery().Where(c => c.Buyer.Name.Contains(query)).ToList())
                     {
                         orderDTOs.Add(new OrderDTO
                         {
