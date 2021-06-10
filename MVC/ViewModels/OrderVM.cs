@@ -20,6 +20,7 @@ namespace MVC.ViewModels
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Длина строки должна быть от 3 до 50 символов")]
         public string DeliveryService { get; set; }
 
+
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Длина строки должна быть от 3 до 50 символов")]
         public string Adress { get; set; }
 
