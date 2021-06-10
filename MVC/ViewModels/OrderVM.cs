@@ -25,6 +25,8 @@ namespace MVC.ViewModels
         public string Adress { get; set; }
 
         [Required]
+        [Display(Name = "Time of order")]
+        [DataType(DataType.Date)]
         public DateTime TimeOfOrder { get; set; }
 
         public decimal FinalPrice { get; set; }
