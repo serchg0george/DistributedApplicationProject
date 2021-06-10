@@ -12,6 +12,7 @@ namespace MVC.ViewModels
         public int Id { get; set; }
 
         [Required]
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Длина строки должна быть от 3 до 50 символов")]
         public string Name { get; set; }
 
         public byte Age { get; set; }
@@ -20,8 +21,10 @@ namespace MVC.ViewModels
 
         public int PhoneNumber { get; set; }
 
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Длина строки должна быть от 3 до 50 символов")]
         public string Email { get; set; }
 
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Длина строки должна быть от 3 до 50 символов")]
         public string Sex { get; set; }
 
         public BuyerVM() { }
